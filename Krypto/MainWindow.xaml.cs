@@ -17,13 +17,14 @@ namespace Krypto
 {
     public partial class MainWindow : Window
     {
-        private KryptographyService kryptographyService = new KryptographyService();
+        private readonly KryptographyService kryptographyService = new KryptographyService();
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        #region ZADANIE 1
         private void Encode_RailFance(object sender, RoutedEventArgs e)
         {
             string input = RailFence_Input.Text.ToString();
@@ -39,7 +40,9 @@ namespace Krypto
 
             RailFence_Output.Text = kryptographyService.DecodeRail(input, key);
         }
+        #endregion
 
+        #region ZADANIE 2
         private void Encode_A2(object sender, RoutedEventArgs e)
         {
             string input = A2_Input.Text.ToString();
@@ -53,7 +56,10 @@ namespace Krypto
 
             A2_Output.Text = kryptographyService.DecodeMatrixShift(input);
         }
+        #endregion
 
+        #region ZADANIE 3
+        #region 2B
         private void Encode_B2(object sender, RoutedEventArgs e)
         {
             string input = B2_Input.Text.ToString();
@@ -69,7 +75,9 @@ namespace Krypto
 
             B2_Output.Text = kryptographyService.Decode2b(input, key);
         }
+        #endregion
 
+        #region 2C
         private void Encode_C2(object sender, RoutedEventArgs e)
         {
             string input = C2_Input.Text.ToString();
@@ -85,7 +93,10 @@ namespace Krypto
 
             C2_Output.Text = kryptographyService.Decode2c(input, key);
         }
+        #endregion
+        #endregion
 
+        #region ZADANIE 4
         private void Encode_B3(object sender, RoutedEventArgs e)
         {
             string input = B3_Input.Text.ToString();
@@ -103,7 +114,9 @@ namespace Krypto
 
             B3_Output.Text = kryptographyService.DecodeCaesar(input, K1, K0);
         }
+        #endregion
 
+        #region ZADANIE 5
         private void Encode_Vigenere(object sender, RoutedEventArgs e)
         {
             string input = Vigenere_Input.Text.ToString();
@@ -119,5 +132,6 @@ namespace Krypto
 
             Vigenere_Output.Text = kryptographyService.DecodeVigenere(input, key);
         }
+        #endregion
     }
 }

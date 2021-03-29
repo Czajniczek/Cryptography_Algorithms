@@ -99,11 +99,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Studia\\Projects\\BSK_Cryprography\\BSK_Template\\Krypto\\Krypto.csproj",
+      "projectUniqueName": "C:\\Studia\\Projects\\BSK_Cryptography_WPF\\Krypto\\Krypto.csproj",
       "projectName": "Krypto",
-      "projectPath": "C:\\Studia\\Projects\\BSK_Cryprography\\BSK_Template\\Krypto\\Krypto.csproj",
+      "projectPath": "C:\\Studia\\Projects\\BSK_Cryptography_WPF\\Krypto\\Krypto.csproj",
       "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-      "outputPath": "C:\\Studia\\Projects\\BSK_Cryprography\\BSK_Template\\Krypto\\obj\\",
+      "outputPath": "C:\\Studia\\Projects\\BSK_Cryptography_WPF\\Krypto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
