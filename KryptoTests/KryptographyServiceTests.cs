@@ -5,7 +5,7 @@ namespace KryptoTests
 {
     public class KryptographyServiceTests
     {
-        private  KryptographyService service;
+        private KryptographyService service;
 
         [SetUp]
         public void Setup()
@@ -13,17 +13,19 @@ namespace KryptoTests
             service = new KryptographyService();
         }
 
-        [TestCase("CRYPTOGRAPHY",3, "CTARPORPYYGH")]
+        #region ZADANIE 1
+        [TestCase("CRYPTOGRAPHY", 3, "CTARPORPYYGH")]
         [TestCase("TestowanieSzyfrow", 5, "TiweneosaSrtwzfoy")]
         [TestCase("Kryptografia", 8, "Krypatiofgar")]
         [TestCase("SiecKomputerowa", 4, "SmoioprweKueact")]
         [TestCase("DoZakodowaniaTojestTekst", 7, "DaoiTtZnosaajkkweeoosTdt")]
         public void RailfenceEncode(string input, int key, string output)
         {
-            var result = service.EncodeRail(input, key);
+            var result = service.RailFenceEncode(input, key);
 
             Assert.AreEqual(output, result);
         }
+
         [TestCase("CTARPORPYYGH", 3, "CRYPTOGRAPHY")]
         [TestCase("TiweneosaSrtwzfoy", 5, "TestowanieSzyfrow")]
         [TestCase("Krypatiofgar", 8, "Kryptografia")]
@@ -31,19 +33,21 @@ namespace KryptoTests
         [TestCase("DaoiTtZnosaajkkweeoosTdt", 7, "DoZakodowaniaTojestTekst")]
         public void RailfenceDecode(string input, int key, string output)
         {
-            var result = service.DecodeRail(input, key);
+            var result = service.RailFenceDecode(input, key);
 
             Assert.AreEqual(output, result);
         }
+        #endregion
 
+        #region ZADANIE 2
         [TestCase("CRYPTOGRAPHY", "YPCTRRAOPGHY")]
-        [TestCase("TestowanieSzyfrow","stToeniweayfSrzow")]
-        [TestCase("Kryptografia","ypKtrraofgia")]
-        [TestCase("SiecKomputerowa","ecSKipuotmowear")]
-        [TestCase("DoZakodowaniaTojestTekst","ZaDkoowoadaTnoistjTestek")]
+        [TestCase("TestowanieSzyfrow", "stToeniweayfSrzow")]
+        [TestCase("Kryptografia", "ypKtrraofgia")]
+        [TestCase("SiecKomputerowa", "ecSKipuotmowear")]
+        [TestCase("DoZakodowaniaTojestTekst", "ZaDkoowoadaTnoistjTestek")]
         public void MatrixShiftEncode(string input, string output)
         {
-            var result = service.EncodeMatrixShift(input);
+            var result = service.MatrixShift2AEncode(input);
 
             Assert.AreEqual(output, result);
         }
@@ -55,22 +59,24 @@ namespace KryptoTests
         [TestCase("ZaDkoowoadaTnoistjTestek", "DoZakodowaniaTojestTekst")]
         public void MatrixShiftDecode(string input, string output)
         {
-            var result = service.DecodeMatrixShift(input);
+            var result = service.MatrixShift2ADecode(input);
 
             Assert.AreEqual(output, result);
         }
+        #endregion
 
+        #region ZADANIE 3
+        #region 2B
         [TestCase("CRYPTOGRAPHY", "CONVENIENCE", "CYPTRHGYOARP")]
         [TestCase("TestowanieSzyfrow", "CONVENIENCE", "TzeoonSasfwwieytr")]
         [TestCase("Kryptografia", "CONVENIENCE", "Kaftrigyoarp")]
         [TestCase("SiecKomputerowa", "CONVENIENCE", "SrtKpemewouioca")]
         [TestCase("DoZakodowaniaTojestTekst", "CONVENIENCE", "DisaekjotnkdsZToewToatao")]
-        public void Encode2b(string input,string key , string output)
+        public void Encode2b(string input, string key, string output)
         {
-            var result = service.Encode2b(input,key);
+            var result = service.MatrixShift2BEncode(input, key);
 
             Assert.AreEqual(output, result);
-
         }
 
         [TestCase("CYPTRHGYOARP", "CONVENIENCE", "CRYPTOGRAPHY")]
@@ -80,12 +86,13 @@ namespace KryptoTests
         [TestCase("DisaekjotnkdsZToewToatao", "CONVENIENCE", "DoZakodowaniaTojestTekst")]
         public void Decode2b(string input, string key, string output)
         {
-            var result = service.Decode2b(input,key);
+            var result = service.MatrixShift2BDecode(input, key);
 
             Assert.AreEqual(output, result);
-
         }
+        #endregion
 
+        #region 2C
         [TestCase("CRYPTOGRAPHY", "CONVENIENCE", "CRYHOARPGPYT")]
         [TestCase("TestowanieSzyfrow", "CONVENIENCE", "TezwSwointfaesyor")]
         [TestCase("Kryptografia", "CONVENIENCE", "Kraioarpgfyt")]
@@ -96,7 +103,6 @@ namespace KryptoTests
             var result = service.Encode2c(input, key);
 
             Assert.AreEqual(output, result);
-
         }
 
         [TestCase("CRYHOARPGPYT", "CONVENIENCE", "CRYPTOGRAPHY")]
@@ -109,36 +115,37 @@ namespace KryptoTests
             var result = service.Decode2c(input, key);
 
             Assert.AreEqual(output, result);
-
         }
+        #endregion
+        #endregion
 
-        [TestCase("CRYPTOGRAPHY",7,5, "TURGizvUFGCR")]
-        [TestCase("TestowanieSzyfrow", 7, 5, "iHBIZdfSjHbyrOuZd")]
-        [TestCase("Kryptografia", 7, 5, "XurgIZVufOjf")]
-        [TestCase("SiecKomputerowa", 7, 5, "bjHtXZLgPIHuZdf")]
-        [TestCase("DoZakodowaniaTojestTekst", 7, 5, "aZYfxZAZdfSjfiZqHBIiHxBI")]
-        public void EncodeCaesar(string input, int a, int b, string output)
+        #region ZADANIE 4
+        [TestCase("CRYPTOGRAPHY", 7, 5, "TURGIZVUFGCR")]
+        [TestCase("TestowanieSzyfrow", 7, 5, "IhbizdfsjhByrouzd")]
+        [TestCase("Kryptografia", 7, 5, "Xurgizvufojf")]
+        [TestCase("SiecKomputerowa", 7, 5, "BjhtXzlgpihuzdf")]
+        [TestCase("DoZakodowaniaTojestTekst", 7, 5, "AzYfxzazdfsjfIzqhbiIhxbi")]
+        public void CaesarEncode(string input, int a, int b, string output)
         {
-            var result = service.EncodeCaesar(input, a,b);
+            var result = service.CaesarEncode(input, a, b);
 
             Assert.AreEqual(output, result);
-
         }
 
-        [TestCase("TURGizvUFGCR", 7, 5, "CRYPTOGRAPHY")]
-        [TestCase("iHBIZdfSjHbyrOuZd", 7, 5, "TestowanieSzyfrow")]
-        [TestCase("XurgIZVufOjf", 7, 5, "Kryptografia")]
-        [TestCase("bjHtXZLgPIHuZdf", 7, 5, "SiecKomputerowa")]
-        [TestCase("aZYfxZAZdfSjfiZqHBIiHxBI", 7, 5, "DoZakodowaniaTojestTekst")]
-        public void DecodeCaesar(string input, int a, int b, string output)
+        [TestCase("TURGIZVUFGCR", 7, 5, "CRYPTOGRAPHY")]
+        [TestCase("IhbizdfsjhByrouzd", 7, 5, "TestowanieSzyfrow")]
+        [TestCase("Xurgizvufojf", 7, 5, "Kryptografia")]
+        [TestCase("BjhtXzlgpihuzdf", 7, 5, "SiecKomputerowa")]
+        [TestCase("AzYfxzazdfsjfIzqhbiIhxbi", 7, 5, "DoZakodowaniaTojestTekst")]
+        public void CaesarDecode(string input, int a, int b, string output)
         {
-            var result = service.DecodeCaesar(input, a, b);
+            var result = service.CaesarDecode(input, a, b);
 
             Assert.AreEqual(output, result);
-
-
         }
+        #endregion
 
+        #region ZADANIE 5
         [TestCase("CRYPTOGRAPHY", "BREAK", "DICPDPXVAZIP")]
         [TestCase("TestowanieSzyfrow", "BREAK", "UvwtyxrrioTqcfbpn")]
         [TestCase("Kryptografia", "BREAK", "Licpdpxvapjr")]
@@ -149,11 +156,10 @@ namespace KryptoTests
             var result = service.EncodeVigenere(input, key);
 
             Assert.AreEqual(output, result);
-
         }
 
-        [TestCase("DICPDPXVAZIP", "BREAK",  "CRYPTOGRAPHY")]
-        [TestCase("UvwtyxrrioTqcfbpn", "BREAK",  "TestowanieSzyfrow")]
+        [TestCase("DICPDPXVAZIP", "BREAK", "CRYPTOGRAPHY")]
+        [TestCase("UvwtyxrrioTqcfbpn", "BREAK", "TestowanieSzyfrow")]
         [TestCase("Licpdpxvapjr", "BREAK", "Kryptografia")]
         [TestCase("TzicUpdtudfiswk", "BREAK", "SiecKomputerowa")]
         [TestCase("EfDaupuswkozeTykvwtDfbwt", "BREAK", "DoZakodowaniaTojestTekst")]
@@ -162,8 +168,7 @@ namespace KryptoTests
             var result = service.DecodeVigenere(input, key);
 
             Assert.AreEqual(output, result);
-
         }
-
+        #endregion
     }
 }

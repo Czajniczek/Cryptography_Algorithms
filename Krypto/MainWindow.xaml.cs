@@ -30,7 +30,7 @@ namespace Krypto
             string input = RailFence_Input.Text.ToString();
             int key = int.Parse(RailFence_Key.Text);
 
-            RailFence_Output.Text = kryptographyService.EncodeRail(input, key);
+            RailFence_Output.Text = kryptographyService.RailFenceEncode(input, key);
         }
 
         private void Decode_RailFance(object sender, RoutedEventArgs e)
@@ -38,7 +38,7 @@ namespace Krypto
             string input = RailFence_Input.Text.ToString();
             int key = int.Parse(RailFence_Key.Text);
 
-            RailFence_Output.Text = kryptographyService.DecodeRail(input, key);
+            RailFence_Output.Text = kryptographyService.RailFenceDecode(input, key);
         }
         #endregion
 
@@ -47,14 +47,14 @@ namespace Krypto
         {
             string input = A2_Input.Text.ToString();
 
-            A2_Output.Text = kryptographyService.EncodeMatrixShift(input);
+            A2_Output.Text = kryptographyService.MatrixShift2AEncode(input);
         }
 
         private void Decode_A2(object sender, RoutedEventArgs e)
         {
             string input = A2_Input.Text.ToString();
 
-            A2_Output.Text = kryptographyService.DecodeMatrixShift(input);
+            A2_Output.Text = kryptographyService.MatrixShift2ADecode(input);
         }
         #endregion
 
@@ -65,7 +65,7 @@ namespace Krypto
             string input = B2_Input.Text.ToString();
             string key = B2_Key.Text.ToString();
 
-            B2_Output.Text = kryptographyService.Encode2b(input, key);
+            B2_Output.Text = kryptographyService.MatrixShift2BEncode(input, key);
         }
 
         private void Decode_B2(object sender, RoutedEventArgs e)
@@ -73,7 +73,7 @@ namespace Krypto
             string input = B2_Input.Text.ToString();
             string key = B2_Key.Text.ToString();
 
-            B2_Output.Text = kryptographyService.Decode2b(input, key);
+            B2_Output.Text = kryptographyService.MatrixShift2BDecode(input, key);
         }
         #endregion
 
@@ -103,7 +103,7 @@ namespace Krypto
             int K1 = int.Parse(B3_A.Text);
             int K0 = int.Parse(B3_B.Text);
 
-            B3_Output.Text = kryptographyService.EncodeCaesar(input, K1, K0);
+            B3_Output.Text = kryptographyService.CaesarEncode(input, K1, K0);
         }
 
         private void Decode_B3(object sender, RoutedEventArgs e)
@@ -112,7 +112,7 @@ namespace Krypto
             int K1 = int.Parse(B3_A.Text);
             int K0 = int.Parse(B3_B.Text);
 
-            B3_Output.Text = kryptographyService.DecodeCaesar(input, K1, K0);
+            B3_Output.Text = kryptographyService.CaesarDecode(input, K1, K0);
         }
         #endregion
 
