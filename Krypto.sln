@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krypto", "Krypto\Krypto.csproj", "{AB4077C6-C314-4B6B-9099-53DB42DCF38A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptoTests", "KryptoTests\KryptoTests.csproj", "{908407BD-1514-4E56-B612-BAB022CEF156}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AE83D89-45AC-49A8-AD21-79DA6BE2B374}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB4077C6-C314-4B6B-9099-53DB42DCF38A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4077C6-C314-4B6B-9099-53DB42DCF38A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4077C6-C314-4B6B-9099-53DB42DCF38A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4077C6-C314-4B6B-9099-53DB42DCF38A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908407BD-1514-4E56-B612-BAB022CEF156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908407BD-1514-4E56-B612-BAB022CEF156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908407BD-1514-4E56-B612-BAB022CEF156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908407BD-1514-4E56-B612-BAB022CEF156}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F5CBC1F-074E-4DC0-B0BB-C3452E8671D7}
+	EndGlobalSection
+EndGlobal

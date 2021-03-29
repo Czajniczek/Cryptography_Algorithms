@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8+So668a71C8lbJCU304AfdUrkbtd4Co+iP9h3TPYkq+qGXlWdFEy9M0mgT2wQnlh2F5NV50vfO0JY++QWg+3Q==",
+  "success": true,
+  "projectFilePath": "C:\\Studia\\Projects\\BSK_Cryprography\\BSK_Template\\Krypto\\Krypto.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gabri\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
+    "C:\\Users\\gabri\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
