@@ -8,6 +8,7 @@ namespace Krypto
 {
     public class KryptographyService
     {
+        #region ZADANIE 1
         public string DecodeRail(string input, int key)
         {
             char[,] matrix = new char[key, input.Length];
@@ -128,7 +129,10 @@ namespace Krypto
             }
 
             return output;
-        }         
+        }
+        #endregion
+
+        #region ZADANIE 2
         public string EncodeMatrixShift(string input)
         {
             int[] keyValues = { 2, 3, 0, 4, 1 };
@@ -212,7 +216,11 @@ namespace Krypto
                 }
             }
             return str.ToString();
-        }         
+        }
+        #endregion
+
+        #region ZADANIE 3
+        #region 2B
         public string Encode2b(string input, string key)
         {
             int rows = input.Length / key.Length;
@@ -263,7 +271,8 @@ namespace Krypto
             }
 
             return stringBuilder.ToString();
-        } 
+        }
+
         public string Decode2b(string input, string key)
         {
             int rows = input.Length / key.Length;
@@ -319,7 +328,10 @@ namespace Krypto
 
 
             return stringBuilder.ToString();
-        } 
+        }
+        #endregion
+
+        #region 2C
         public string Encode2c(string input, string key)
         {
 
@@ -383,6 +395,7 @@ namespace Krypto
 
             return str.ToString();
         } 
+
         public string Decode2c(string input, string key)
         {
             char[,] arr = new char[input.Length, key.Length];
@@ -457,7 +470,11 @@ namespace Krypto
             }
 
             return str.ToString();
-        } 
+        }
+        #endregion
+        #endregion
+
+        #region ZADANIE 4
         public string EncodeCaesar(string input, int k1, int k0)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -474,6 +491,7 @@ namespace Krypto
             }
             return str.ToString();
         }
+
         public string DecodeCaesar(string input, int k1, int k0)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -490,6 +508,9 @@ namespace Krypto
             }
             return str.ToString();
         }
+        #endregion
+
+        #region ZADANIE 5
         public string EncodeVigenere(string input, string key)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -525,6 +546,7 @@ namespace Krypto
             }
             return str.ToString();
         }
+
         public string DecodeVigenere(string input, string key)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -564,5 +586,6 @@ namespace Krypto
 
             return str.ToString();
         }
+        #endregion
     }
 }
