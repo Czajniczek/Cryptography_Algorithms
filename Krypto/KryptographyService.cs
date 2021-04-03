@@ -11,29 +11,29 @@ namespace Krypto
         #region ZADANIE 1
         public string RailFenceEncode(string input, int key)
         {
-            char[,] matrix = new char[key, input.Length];
-            int row = 0, col = 0;
-            bool move_down = true;
+            char[,] matrix = new char[key, input.Length]; //Matrix
+            int row = 0, col = 0; //Rows and columns
+            bool move_down = true; //Moving up or down
             string output = "";
 
-            while (col < input.Length)
+            while (col < input.Length) //Going over each letter
             {
-                matrix[row, col] = input[col];
+                matrix[row, col] = input[col]; //Assign a value to a matrix
 
-                if (row == key - 1) move_down = false;
-                else if (row == 0) move_down = true;
+                if (row == 0) move_down = true; //First row => moving down
+                else if (row == key - 1) move_down = false; //Last row => moving up
 
-                if (move_down) row++;
-                else row--;
+                if (move_down) row++; //Row incrementation
+                else row--; //Row decrementation
 
-                col++;
+                col++; //Move to the next column
             }
 
-            for (int i = 0; i < key; i++)
+            for (int i = 0; i < key; i++) //All rows
             {
-                for (int j = 0; j < input.Length; j++)
+                for (int j = 0; j < input.Length; j++) //All columns
                 {
-                    if (matrix[i, j] != '\0') output += matrix[i, j];
+                    if (matrix[i, j] != '\0') output += matrix[i, j]; //Assign a value to the output
                 }
             }
 
@@ -42,33 +42,33 @@ namespace Krypto
 
         public string RailFenceDecode(string input, int key)
         {
-            char[,] matrix = new char[key, input.Length];
-            int row = 0, col = 0;
-            bool move_down = true;
+            char[,] matrix = new char[key, input.Length]; //Matrix
+            int row = 0, col = 0; //Rows and columns
+            bool move_down = true; //Moving up or down
             string output = "";
 
-            while (col < input.Length)
+            while (col < input.Length) //Going over each letter
             {
-                matrix[row, col] = '*';
+                matrix[row, col] = '*'; //Assigning '*' where values should be
 
-                if (row == 0) move_down = true;
-                else if (row == key - 1) move_down = false;
+                if (row == 0) move_down = true; //First row => moving down
+                else if (row == key - 1) move_down = false; //Last row => moving up
 
-                if (move_down) row++;
-                else row--;
+                if (move_down) row++; //Row incrementation
+                else row--; //Row decrementation
 
-                col++;
+                col++; //Move to the next column
             }
 
             col = 0;
-            for (int i = 0; i < key; i++)
+            for (int i = 0; i < key; i++) //All rows
             {
-                for (int j = 0; j < input.Length; j++)
+                for (int j = 0; j < input.Length; j++) //All columns
                 {
-                    if (matrix[i, j] == '*')
+                    if (matrix[i, j] == '*') //If the value is '*'
                     {
-                        matrix[i, j] = input[col];
-                        col++;
+                        matrix[i, j] = input[col]; //Assign a value to a matrix
+                        col++; //Move to the next column
                     }
                 }
             }
@@ -77,15 +77,15 @@ namespace Krypto
             col = 0;
             while (col < input.Length)
             {
-                output += matrix[row, col];
+                output += matrix[row, col]; //Assign a value to the output
 
-                if (row == 0) move_down = true;
-                else if (row == key - 1) move_down = false;
+                if (row == 0) move_down = true; //First row => moving down
+                else if (row == key - 1) move_down = false; //Last row => moving up
 
-                if (move_down) row++;
-                else row--;
+                if (move_down) row++; //Row incrementation
+                else row--; //Row decrementation
 
-                col++;
+                col++; //Move to the next column
             }
 
             return output;
@@ -101,8 +101,8 @@ namespace Krypto
             if (input.Length % keyValues.Length != 0) rows++;
 
             char[,] matrix = new char[rows, keyValues.Length];
-            string output = "";
             int index = 0;
+            string output = "";
 
             for (int i = 0; i < rows; i++)
             {
@@ -137,8 +137,8 @@ namespace Krypto
 
             char[,] matrix = new char[rows, keyValues.Length];
             int emptyCells = rows * keyValues.Length - input.Length;
-            string output = "";
             int inputIndex = keyValues.Length - 1;
+            string output = "";
 
             for (int i = 0; i < emptyCells; i++)
             {
