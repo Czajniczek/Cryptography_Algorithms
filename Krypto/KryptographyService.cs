@@ -182,8 +182,8 @@ namespace Krypto
             if (input.Length % key.Length != 0) rows++;
 
             char[,] matrix = new char[rows, key.Length];
-            string output = "";
             int index = 0;
+            string output = "";
 
             for (int i = 0; i < rows; i++)
             {
@@ -225,12 +225,13 @@ namespace Krypto
 
             char[,] matrix = new char[rows, key.Length];
             int cells = rows * key.Length - input.Length;
-            string output = "";
             int index = key.Length - 1;
+            string output = "";
 
             for (int i = 0; i < cells; i++)
             {
-                matrix[rows - 1, index--] = '*';
+                matrix[rows - 1, index] = '*';
+                index--;
             }
 
             index = 0;
