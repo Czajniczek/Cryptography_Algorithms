@@ -83,7 +83,7 @@ namespace Krypto
             string input = C2_Input.Text.ToString();
             string key = C2_Key.Text.ToString();
 
-            C2_Output.Text = kryptographyService.Encode2c(input, key);
+            C2_Output.Text = kryptographyService.MatrixShift2CEncode(input, key);
         }
 
         private void Decode_C2(object sender, RoutedEventArgs e)
@@ -91,7 +91,7 @@ namespace Krypto
             string input = C2_Input.Text.ToString();
             string key = C2_Key.Text.ToString();
 
-            C2_Output.Text = kryptographyService.Decode2c(input, key);
+            C2_Output.Text = kryptographyService.MatrixShift2CDecode(input, key);
         }
         #endregion
         #endregion
@@ -122,7 +122,7 @@ namespace Krypto
             string input = Vigenere_Input.Text.ToString();
             string key = Vigenere_Key.Text.ToString();
 
-            Vigenere_Output.Text = kryptographyService.EncodeVigenere(input, key);
+            Vigenere_Output.Text = kryptographyService.VigenereEncode(input, key);
         }
 
         private void Decode_Vigenere(object sender, RoutedEventArgs e)
@@ -130,7 +130,7 @@ namespace Krypto
             string input = Vigenere_Input.Text.ToString();
             string key = Vigenere_Key.Text.ToString();
 
-            Vigenere_Output.Text = kryptographyService.DecodeVigenere(input, key);
+            Vigenere_Output.Text = kryptographyService.VigenereDecode(input, key);
         }
         #endregion
     }

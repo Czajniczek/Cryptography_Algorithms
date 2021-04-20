@@ -11,29 +11,29 @@ namespace Krypto
         #region ZADANIE 1
         public string RailFenceEncode(string input, int key)
         {
-            char[,] matrix = new char[key, input.Length]; //Matrix
-            int row = 0, col = 0; //Rows and columns
-            bool move_down = true; //Moving up or down
+            char[,] matrix = new char[key, input.Length];
+            int row = 0, column = 0;
+            bool move_down = true;
             string output = "";
 
-            while (col < input.Length) //Going over each letter
+            while (column < input.Length)
             {
-                matrix[row, col] = input[col]; //Assign a value to a matrix
+                matrix[row, column] = input[column];
 
-                if (row == 0) move_down = true; //First row => moving down
-                else if (row == key - 1) move_down = false; //Last row => moving up
+                if (row == 0) move_down = true;
+                else if (row == key - 1) move_down = false;
 
-                if (move_down) row++; //Row incrementation
-                else row--; //Row decrementation
+                if (move_down) row++;
+                else row--;
 
-                col++; //Move to the next column
+                column++;
             }
 
-            for (int i = 0; i < key; i++) //All rows
+            for (int i = 0; i < key; i++)
             {
-                for (int j = 0; j < input.Length; j++) //All columns
+                for (int j = 0; j < input.Length; j++)
                 {
-                    if (matrix[i, j] != '\0') output += matrix[i, j]; //Assign a value to the output
+                    if (matrix[i, j] != '\0') output += matrix[i, j];
                 }
             }
 
@@ -42,50 +42,50 @@ namespace Krypto
 
         public string RailFenceDecode(string input, int key)
         {
-            char[,] matrix = new char[key, input.Length]; //Matrix
-            int row = 0, col = 0; //Rows and columns
-            bool move_down = true; //Moving up or down
+            char[,] matrix = new char[key, input.Length];
+            int row = 0, column = 0;
+            bool move_down = true;
             string output = "";
 
-            while (col < input.Length) //Going over each letter
+            while (column < input.Length)
             {
-                matrix[row, col] = '*'; //Assigning '*' where values should be
+                matrix[row, column] = '*';
 
-                if (row == 0) move_down = true; //First row => moving down
-                else if (row == key - 1) move_down = false; //Last row => moving up
+                if (row == 0) move_down = true;
+                else if (row == key - 1) move_down = false;
 
-                if (move_down) row++; //Row incrementation
-                else row--; //Row decrementation
+                if (move_down) row++;
+                else row--;
 
-                col++; //Move to the next column
+                column++;
             }
 
-            col = 0;
-            for (int i = 0; i < key; i++) //All rows
+            column = 0;
+            for (int i = 0; i < key; i++)
             {
-                for (int j = 0; j < input.Length; j++) //All columns
+                for (int j = 0; j < input.Length; j++)
                 {
-                    if (matrix[i, j] == '*') //If the value is '*'
+                    if (matrix[i, j] == '*')
                     {
-                        matrix[i, j] = input[col]; //Assign a value to a matrix
-                        col++; //Move to the next column
+                        matrix[i, j] = input[column];
+                        column++;
                     }
                 }
             }
 
             row = 0;
-            col = 0;
-            while (col < input.Length)
+            column = 0;
+            while (column < input.Length)
             {
-                output += matrix[row, col]; //Assign a value to the output
+                output += matrix[row, column];
 
-                if (row == 0) move_down = true; //First row => moving down
-                else if (row == key - 1) move_down = false; //Last row => moving up
+                if (row == 0) move_down = true;
+                else if (row == key - 1) move_down = false;
 
-                if (move_down) row++; //Row incrementation
-                else row--; //Row decrementation
+                if (move_down) row++;
+                else row--;
 
-                col++; //Move to the next column
+                column++;
             }
 
             return output;
@@ -95,18 +95,18 @@ namespace Krypto
         #region ZADANIE 2
         public string MatrixShift2AEncode(string input)
         {
-            int[] keyValues = { 2, 3, 0, 4, 1 };
-            int rows = input.Length / keyValues.Length;
+            int[] key = { 2, 3, 0, 4, 1 };
+            int rows = input.Length / key.Length;
 
-            if (input.Length % keyValues.Length != 0) rows++;
+            if (input.Length % key.Length != 0) rows++;
 
-            char[,] matrix = new char[rows, keyValues.Length];
+            char[,] matrix = new char[rows, key.Length];
             int index = 0;
             string output = "";
 
             for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < keyValues.Length; j++)
+                for (int j = 0; j < key.Length; j++)
                 {
                     if (index < input.Length)
                     {
@@ -119,7 +119,7 @@ namespace Krypto
 
             for (int i = 0; i < rows; i++)
             {
-                foreach (int col in keyValues)
+                foreach (int col in key)
                 {
                     if (matrix[i, col] != '*') output += matrix[i, col];
                 }
@@ -130,14 +130,14 @@ namespace Krypto
 
         public string MatrixShift2ADecode(string input)
         {
-            int[] keyValues = { 2, 3, 0, 4, 1 };
-            int rows = input.Length / keyValues.Length;
+            int[] key = { 2, 3, 0, 4, 1 };
+            int rows = input.Length / key.Length;
 
-            if (input.Length % keyValues.Length != 0) rows++;
+            if (input.Length % key.Length != 0) rows++;
 
-            char[,] matrix = new char[rows, keyValues.Length];
-            int emptyCells = rows * keyValues.Length - input.Length;
-            int inputIndex = keyValues.Length - 1;
+            char[,] matrix = new char[rows, key.Length];
+            int emptyCells = rows * key.Length - input.Length;
+            int inputIndex = key.Length - 1;
             string output = "";
 
             for (int i = 0; i < emptyCells; i++)
@@ -149,7 +149,7 @@ namespace Krypto
             inputIndex = 0;
             for (int i = 0; i < rows; i++)
             {
-                foreach (var col in keyValues)
+                foreach (var col in key)
                 {
                     if (matrix[i, col] != '*')
                     {
@@ -161,7 +161,7 @@ namespace Krypto
 
             for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < keyValues.Length; j++)
+                for (int j = 0; j < key.Length; j++)
                 {
                     if (matrix[i, j] != '*') output += matrix[i, j];
                 }
@@ -189,7 +189,7 @@ namespace Krypto
             {
                 for (int j = 0; j < key.Length; j++)
                 {
-                    if (input.Length - 1 >= index)
+                    if (index < input.Length)
                     {
                         matrix[i, j] = input[index];
                         index++;
@@ -266,9 +266,11 @@ namespace Krypto
         #endregion
 
         #region 2C
-        public string Encode2c(string input, string key)
+        public string MatrixShift2CEncode(string input, string key)
         {
             input = string.Concat(input.Where(c => !char.IsWhiteSpace(c)));
+            key = key.ToUpper();
+
             char[,] matrix = new char[input.Length, key.Length];
             int[] numberKey = new int[key.Length];
             int newKeyCounter = 0;
@@ -296,10 +298,10 @@ namespace Krypto
                     }
                     else matrix[i, j] = '*';
                 }
+
                 fullRow = false;
             }
 
-            passwordCounter = 0;
             for (int i = 65; i < 91; i++)
             {
                 for (int j = 0; j < key.Length; j++)
@@ -317,9 +319,11 @@ namespace Krypto
             return output;
         }
 
-        public string Decode2c(string input, string key)
+        public string MatrixShift2CDecode(string input, string key)
         {
             input = string.Concat(input.Where(c => !char.IsWhiteSpace(c)));
+            key = key.ToUpper();
+
             char[,] matrix = new char[input.Length, key.Length];
             int[] numberKey = new int[key.Length];
             int newKeyCounter = 0;
@@ -347,6 +351,7 @@ namespace Krypto
                     }
                     else matrix[i, j] = '*';
                 }
+
                 fullRow = false;
             }
 
@@ -357,9 +362,9 @@ namespace Krypto
                 {
                     if (key[j] == i)
                     {
-                        for (int m = 0; m < input.Length; m++)
+                        for (int k = 0; k < input.Length; k++)
                         {
-                            if (matrix[m, j] != '*') matrix[m, j] = input[passwordCounter++];
+                            if (matrix[k, j] != '*') matrix[k, j] = input[passwordCounter++];
                         }
                     }
                 }
@@ -382,15 +387,18 @@ namespace Krypto
         public string CaesarEncode(string input, int k1, int k0)
         {
             input = string.Concat(input.Where(c => !char.IsWhiteSpace(c)));
+
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
             int n = alphabet.Length;
             string output = "";
 
             for (int i = 0; i < input.Length; i++)
             {
-                char znak = alphabet[((alphabet.IndexOf(input[i], StringComparison.CurrentCultureIgnoreCase) * k1) + k0) % n];
-                if (input[i] < 'a') output += znak.ToString().ToUpper();
-                else output += znak;
+                char sign = alphabet[((alphabet.IndexOf(input[i],
+                    StringComparison.CurrentCultureIgnoreCase) * k1) + k0) % n];
+
+                if (input[i] < 'a') output += sign.ToString().ToUpper();
+                else output += sign;
             }
 
             return output;
@@ -399,16 +407,19 @@ namespace Krypto
         public string CaesarDecode(string input, int k1, int k0)
         {
             input = string.Concat(input.Where(c => !char.IsWhiteSpace(c)));
+
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
-            int n = alphabet.Length;
-            int euler = 12;
+            int n = alphabet.Length, euler_number = 12;
             string output = "";
 
             for (int i = 0; i < input.Length; i++)
             {
-                char znak = alphabet[(int)((alphabet.IndexOf(input[i], StringComparison.CurrentCultureIgnoreCase) + (n - k0)) * BigInteger.Pow(k1, euler - 1) % n)];
-                if (input[i] < 'a') output += znak.ToString().ToUpper();
-                else output += znak;
+                char sign = alphabet[(int)((alphabet.IndexOf(input[i],
+                    StringComparison.CurrentCultureIgnoreCase) + (n - k0)) *
+                    BigInteger.Pow(k1, euler_number - 1) % n)];
+
+                if (input[i] < 'a') output += sign.ToString().ToUpper();
+                else output += sign;
             }
 
             return output;
@@ -416,25 +427,25 @@ namespace Krypto
         #endregion
 
         #region ZADANIE 5
-        public string EncodeVigenere(string input, string key)
+        public string VigenereEncode(string input, string key)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
-            char[,] matrix = new char[26, 26];
+            int n = alphabet.Length, index = 0;
+            char[,] matrix = new char[n, n];
             string output = "";
-            int index = 0;
 
-            for (int i = 0; i < 26; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < 26; j++)
+                for (int j = 0; j < n; j++)
                 {
                     matrix[i, j] = alphabet[index];
-                    index = (index + 1) % 26;
+                    index = (index + 1) % n;
                 }
 
-                index = (index + 1) % 26;
+                index = (index + 1) % n;
             }
 
-            for (int i = 0, j = 0; i < input.Length; i++, j++)
+            for (int i = 0; i < input.Length; i++)
             {
                 int col = alphabet.IndexOf(input[i], StringComparison.CurrentCultureIgnoreCase);
                 int row = alphabet.IndexOf(key[i % key.Length], StringComparison.CurrentCultureIgnoreCase);
@@ -446,28 +457,30 @@ namespace Krypto
             return output;
         }
 
-        public string DecodeVigenere(string input, string key)
+        public string VigenereDecode(string input, string key)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
-            char[,] matrix = new char[26, 26];
+            int n = alphabet.Length, index = 0;
+            char[,] matrix = new char[n, n];
             string output = "";
-            int index = 0;
 
-            for (int i = 0; i < 26; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < 26; j++)
+                for (int j = 0; j < n; j++)
                 {
                     matrix[i, j] = alphabet[index];
-                    index = (index + 1) % 26;
+                    index = (index + 1) % n;
                 }
-                index = (index + 1) % 26;
+                index = (index + 1) % n;
             }
 
             for (int i = 0; i < input.Length; i++)
             {
                 int col = 0;
                 int row = alphabet.IndexOf(key[i % key.Length], StringComparison.CurrentCultureIgnoreCase);
-                while (!matrix[row, col].ToString().Equals(input[i].ToString(), StringComparison.CurrentCultureIgnoreCase))
+                
+                while (!matrix[row, col].ToString().Equals(input[i].ToString(), 
+                    StringComparison.CurrentCultureIgnoreCase))
                 {
                     col++;
                 }
