@@ -1,3 +1,3 @@
 # Cryptography_Algorithms
 
-Implementation of basic cryptographic modules in WPF.
+Implementation of basic cryptographic modules in .NET WPF framework.
