@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9apjPJaeJ49Z0uGdEDllQwi2v/XKnRUT1wgG4nba78beKfKJEwirUd7WzIVw2XaYp0z7lRbg8OB9E9Js0JNHSQ==",
+  "dgSpecHash": "NkmGg1SAuQE4F10qjOFK1nL1cazudiAQqUL69sqrk2mqjPnfhYiADEH3u1z/CB7NM0F5Wh7MVUvRnWm4e02/OA==",
   "success": true,
-  "projectFilePath": "C:\\Studia\\Projects\\BSK_Cryptography_WPF\\Krypto\\Krypto.csproj",
+  "projectFilePath": "C:\\Programowanie\\GitHub\\Projekty\\Cryptography_Algorithms\\Krypto\\Krypto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gabri\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512"
